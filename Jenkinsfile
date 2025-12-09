@@ -17,12 +17,24 @@ pipeline {
             }
         }
 
+        // stage('Build') {
+        //     steps {
+        //         echo 'Building project...'
+        //         bat 'cd %WORKSPACE% && node server.js'
+        //     }
+        // }
+
         stage('Build') {
-            steps {
+        steps {
                 echo 'Building project...'
-                bat 'cd %WORKSPACE% && node server.js'
+                // Run migration / seed / test instead of long-running server
+                bat 'cd %WORKSPACE% && npm install --also=dev'
+                bat 'cd %WORKSPACE% && npm run migrate:latest'
+                bat 'cd %WORKSPACE% && npm run lint'
+                bat 'cd %WORKSPACE% && npm run format'
             }
         }
+
 
         stage('Test') {
             steps {
