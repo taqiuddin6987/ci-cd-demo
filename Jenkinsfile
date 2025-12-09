@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment {
+        PROJECT_DIR = 'D:\\public_html\\extra\\CICD-Demo'
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -13,7 +15,7 @@ pipeline {
         stage('Install Dependencies') {
             steps {
                 echo 'Installing Node.js dependencies...'
-                bat 'cd %WORKSPACE% && npm install'
+                bat 'cd %PROJECT_DIR% && npm install'
             }
         }
 
@@ -28,10 +30,10 @@ pipeline {
         steps {
                 echo 'Building project...'
                 // Run migration / seed / test instead of long-running server
-                bat 'cd %WORKSPACE% && npm install --also=dev'
-                // bat 'cd %WORKSPACE% && npm run migrate:latest'
-                bat 'cd %WORKSPACE% && npm run lint'
-                bat 'cd %WORKSPACE% && npm run format'
+                bat 'cd %PROJECT_DIR% && npm install --also=dev'
+                bat 'cd %PROJECT_DIR% && npm run migrate:latest'
+                bat 'cd %PROJECT_DIR% && npm run lint'
+                bat 'cd %PROJECT_DIR% && npm run format'
             }
         }
 
@@ -39,14 +41,14 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                bat 'cd %WORKSPACE% && echo Tests run here'
+                bat 'cd %PROJECT_DIR% && echo Tests run here'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploy stage...'
-                bat 'cd %WORKSPACE% && echo Deploy step here'
+                bat 'cd %PROJECT_DIR% && echo Deploy step here'
             }
         }
     }
