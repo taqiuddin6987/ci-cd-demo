@@ -16,6 +16,7 @@
     "#src/*": "./src/*.js"
   },
   "scripts": {
+    "start": "node server.js",
     "start:dev": "cross-env NODE_ENV=development nodemon ./server.js",
     "migrate:latest": "cross-env NODE_ENV=development knex migrate:latest",
     "migrate:rollback": "cross-env NODE_ENV=development knex migrate:rollback",
