@@ -16,7 +16,7 @@ pipeline {
         DB_PASSWORD = "admin"
         DATABASE = "testapp"
 
-        # JWT
+        // JWT
         ACCESS_JWT_SECRET = "zlwwVveUgh389JAHiM6Pne9Z89CmeutHmeTpNAvvn5e5HiqrgD26L9jKeIstPFJ3"
         ACCESS_JWT_EXPIRES_IN = "24h"
         REFRESH_JWT_SECRET = "8JZQ58q1eT2C2plHVN8rCa5dWSA37WGn4qtuh1cj0HbPHpr9yD6Y0MgT8HmkgjMf"
