@@ -7,7 +7,7 @@ import HTTP_STATUS from "./http-status.js";
 dotenv.config({
   path: path.resolve(
     process.cwd(),
-    `.env.${process.env.NODE_ENV || "development"}`
+    `.env.${process.env.NODE_ENV || "development"}`,
   ),
 });
 
@@ -81,7 +81,7 @@ async function uploadFile(file, directory = "") {
   const bannerUrl = await upload(
     fileData.Body,
     fileData.UniqueName,
-    fileData.Folder
+    fileData.Folder,
   ).catch(() => {
     const err = new Error("File not upload");
     err.code = HTTP_STATUS.INTERNAL_SERVER_ERROR;

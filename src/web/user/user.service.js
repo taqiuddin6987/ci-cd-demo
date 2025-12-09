@@ -47,7 +47,7 @@ const signin = async (req) => {
 
   const isPasswordMatch = await isVerifyAsync(
     req.body.password,
-    result.password
+    result.password,
   );
 
   if (!isPasswordMatch) {

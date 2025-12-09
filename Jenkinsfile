@@ -10,30 +10,31 @@ pipeline {
             }
         }
 
+        stage('Install Dependencies') {
+            steps {
+                echo 'Installing Node.js dependencies...'
+                bat 'cd %WORKSPACE% && npm install'
+            }
+        }
+
         stage('Build') {
             steps {
                 echo 'Building project...'
-                // Windows ke liye batch command
-                bat 'node server.js'   // Agar Node.js project hai
-                // Python project ke liye: bat 'python script.py'
-                // Java project ke liye: bat 'javac Main.java'
+                bat 'cd %WORKSPACE% && node server.js'
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running tests...'
-                // Windows batch test command
-                bat 'echo Running tests...'  
-                // Replace with actual test command
+                bat 'cd %WORKSPACE% && echo Tests run here'
             }
         }
 
         stage('Deploy') {
             steps {
                 echo 'Deploy stage...'
-                // Optional deploy commands
-                bat 'echo Deploy step here...' 
+                bat 'cd %WORKSPACE% && echo Deploy step here'
             }
         }
     }
