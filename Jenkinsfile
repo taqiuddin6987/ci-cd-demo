@@ -22,7 +22,7 @@ pipeline {
                 withCredentials([file(credentialsId: 'ENV_FILE', variable: 'ENVFILE')]) {
                     bat """
                         cd %PROJECT_DIR%
-                        copy /Y %ENVFILE% .env
+                        copy /Y %ENVFILE% .env.development
                     """
                 }
             }
