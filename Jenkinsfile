@@ -46,11 +46,11 @@ pipeline {
         // }
 
         stage('Build') {
-        steps {
+            steps {
                 echo 'Building project...'
                 // Run migration / seed / test instead of long-running server
                 bat 'cd %PROJECT_DIR% && npm install --also=dev'
-                bat 'cd %PROJECT_DIR% && cross-env NODE_ENV=development knex migrate:latest'
+                bat "cd %PROJECT_DIR% && npm run migrate:laetest"
                 bat 'cd %PROJECT_DIR% && npm run lint'
                 bat 'cd %PROJECT_DIR% && npm run format'
             }
