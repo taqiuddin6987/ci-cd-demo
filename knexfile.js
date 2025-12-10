@@ -1,13 +1,14 @@
 /* eslint-disable prettier/prettier */
-import { config } from 'dotenv';
-import path, { join } from 'path';
-import { fileURLToPath } from 'url';
+import { config } from "dotenv";
+import path, { join } from "path";
+import { fileURLToPath } from "url";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 config({
-  path: join(__dirname, `.env.${process.env['NODE_ENV']}`),
+  // path: join(__dirname, `.env.${process.env['NODE_ENV']}`),
+  path: join(process.cwd(), `.env.${process.env["NODE_ENV"]}`),
 });
 
 /**
@@ -16,14 +17,14 @@ config({
 
 export default {
   development: {
-    client: 'pg',
+    client: "pg",
     connection: {
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DATABASE,
-      timezone: 'UTC',
+      timezone: "UTC",
     },
     pool: {
       min: 2,
@@ -38,22 +39,22 @@ export default {
       },
     },
     migrations: {
-      directory: './db/migrations',
-      tableName: 'knex_migrations',
+      directory: "./db/migrations",
+      tableName: "knex_migrations",
     },
     seeds: {
-      directory: './db/seeds',
+      directory: "./db/seeds",
     },
   },
   staging: {
-    client: 'pg',
+    client: "pg",
     connection: {
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DATABASE,
-      timezone: 'UTC',
+      timezone: "UTC",
     },
     pool: {
       min: 2,
@@ -68,22 +69,22 @@ export default {
       },
     },
     migrations: {
-      directory: './db/migrations',
-      tableName: 'knex_migrations',
+      directory: "./db/migrations",
+      tableName: "knex_migrations",
     },
     seeds: {
-      directory: './db/seeds',
+      directory: "./db/seeds",
     },
   },
   production: {
-    client: 'pg',
+    client: "pg",
     connection: {
       host: process.env.DB_HOST,
       port: process.env.DB_PORT,
       user: process.env.DB_USER,
       password: process.env.DB_PASSWORD,
       database: process.env.DATABASE,
-      timezone: 'UTC',
+      timezone: "UTC",
     },
     pool: {
       min: 2,
@@ -98,11 +99,11 @@ export default {
       },
     },
     migrations: {
-      directory: './db/migrations',
-      tableName: 'knex_migrations',
+      directory: "./db/migrations",
+      tableName: "knex_migrations",
     },
     seeds: {
-      directory: './db/seeds',
+      directory: "./db/seeds",
     },
   },
 };
