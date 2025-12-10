@@ -7,8 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 config({
-  // path: join(__dirname, `.env.${process.env['NODE_ENV']}`),
-  path: join(process.cwd(), `.env.${process.env["NODE_ENV"]}`),
+  path: join(__dirname, `.env.${process.env["NODE_ENV"]}`),
+  // path: join(process.cwd(), `.env.${process.env["NODE_ENV"]}`),
 });
 
 /**
